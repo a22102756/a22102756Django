@@ -1,0 +1,37 @@
+{% extends 'portfolio/layout.html' %}
+{% load static %}
+
+{% block header %}
+{% endblock%}
+
+{% block main %}
+    <section class="section bd-container" id="news">
+        <div class="news-heading">
+            <h1>News Section</h1>
+        </div>
+
+        <div class="news-container">
+            {% for new in noticia %}
+                <div class="news-box">
+                    <div class="news-img">
+                        <img src="{{ new.imagem.url }}" alt="Imagem da Notícia">
+                    </div>
+                    <div class="news-text">
+                        <a href="#" class="news-title">{{ new.titulo }}</a>
+                        <p>{{ new.content }}</p>
+                        <a href="{{ new.link }}">Read More</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}
+{% block footer %}
+    <section class="footer section">
+        <div class="footer__container">
+            <p class="footer__copy">UNIVERSIDADE LUSÓFONA - ENGENHARIA INFORMÁTICA</p>
+            <p>Today is: <span id="date"></span></p>
+            <p class="footer__copy">&#169; 2023 Joana Okica. All rights reserved</p>
+        </div>
+    </section>
+{% endblock %}

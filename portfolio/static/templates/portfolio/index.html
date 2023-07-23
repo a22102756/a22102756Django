@@ -1,0 +1,34 @@
+{% extends 'portfolio/layout.html' %}
+{% load static %}
+
+
+{% block main %}
+    <div class="preloader">
+        <h1 style="font-size: 150px; letter-spacing: 10px;">OKICA</h1>
+        <div class="loading-text" style="z-index: 1;">
+            <span>Live</span>
+            <span style="color: #5A4331">Love</span>
+            <span>Learn</span>
+            <span style="color: #5A4331">Code</span>
+            <span>Repeat</span>
+        </div>
+    </div>
+    <div class="main">
+        <video autoplay muted loop id="myVideo">
+            <source src="{% static 'portfolio/images/20220809_172259.mp4' %}" type="video/mp4">
+        </video>
+
+        <div class="content">
+            <h1>Welcome to my portfolio</h1>
+        </div>
+    </div>
+
+    <div style="display: none; user-select: none;" aria-hidden="true">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/rkcc1HizUZc" title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+        </iframe>
+    </div>
+{% endblock %}
+

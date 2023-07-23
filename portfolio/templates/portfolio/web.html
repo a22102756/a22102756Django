@@ -1,0 +1,62 @@
+{% extends 'portfolio/layout.html' %}
+{% load static %}
+
+{% block header %}
+{% endblock%}
+
+{% block main %}
+    <section class="portfolio section bd-container">
+        <span class="section-subtitle">Front-end & Back-end</span>
+        <h2 class="section__title">Tecnologias</h2>
+        <div class="portfolio__container bd-container">
+            <!--CASE 1-->
+            <div class="portfolio__content mix front">
+                <a href="https://developer.mozilla.org/en-US/docs/Learn/Front-end_web_developer"><img src="{% static 'portfolio/images/back-end.jpg' %}" class="portfolio__img"></a>
+                <div class="portfolio__data">
+                    <a href="https://developer.mozilla.org/en-US/docs/Learn/Front-end_web_developer" class="button button-link"><b>View Details</b></a>
+                    <p class="portfolio__hover-text">O Front-End é responsável pela criação e interação visual dos sites, utilizando HTML, CSS e JavaScript.</p>
+                </div>
+            </div>
+            <!--CASE 2-->
+            <div class="portfolio__content mix front ">
+                <a href="https://flask.palletsprojects.com/"><img src="{% static 'portfolio/images/front-end.jpg' %}" class="portfolio__img"></a>
+                <div class="portfolio__data">
+                    <a href="https://flask.palletsprojects.com/" class="button button-link"><b>View Details</b></a>
+                    <p class="portfolio__hover-text">O Back-End é responsável pela lógica, segurança e funcionamento dos sistemas, utilizando linguagens como Python e Node.js.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+{% endblock %}
+{% block footer %}
+    <section class="footer section">
+        <div class="footer__container">
+            <p>Today is: <span id="date"></span></p>
+            <p class="footer__copy">&#169; 2023 Joana Okica. All rights reserved</p>
+        </div>
+    </section>
+{% endblock %}
+
+<script>
+    const mixer = mixitup('.portfolio__container', {
+    selectors: {
+        target: '.portfolio__content'
+    },
+    animation: {
+        duration: 400
+    }
+});
+
+const linkPortfolio = document.querySelectorAll('.portfolio__item')
+
+function activePortfolio() {
+    if (linkPortfolio) {
+        linkPortfolio.forEach((l) => l.classList.remove('active-portfolio'))
+        this.classList.add('active-portfolio')
+    }
+}
+
+linkPortfolio.forEach((l) => l.addEventListener('click', activePortfolio))
+</script>

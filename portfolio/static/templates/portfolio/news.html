@@ -1,0 +1,28 @@
+{% extends 'portfolio/layout.html' %}
+{% load static %}
+
+{% block header %}
+{% endblock%}
+
+{% block main %}
+    <section class="section bd-container" id="news">
+        <div class="news-heading">
+            <h1>News Section</h1>
+        </div>
+
+        <div class="news-container">
+            {% for new in noticia %}
+                <div class="news-box">
+                    <div class="news-img">
+                        <img src="{{ new.imagem.url }}" alt="Imagem da Notícia">
+                    </div>
+                    <div class="news-text">
+                        <a href="#" class="news-title">{{ new.titulo }}</a>
+                        <p>{{ new.content }}</p>
+                        <a href="{{ new.link }}">Read More</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'portfolio/layout.html' %}
+{% load static %}
+
+{% block header %}
+{% endblock %}
+
+{% block main %}
+    <section class="section bd-container" id="news">
+        <div class="news-heading">
+            <h1>Projetos</h1>
+            <p>Os seguintes projetos foram realizados por alunos no ultimo ano de licenciatura</p>
+        </div>
+
+        <div class="news-container">
+            {% for project in projects %}
+                <div class="news-box">
+                    <div class="news-text">
+                        <h2>{{ project.title }}</h2>
+                        <p>Advisor:
+                            {% for professor in projects.professores %}
+                                <a href="{{ professor.link }}">| {{ professor.nome }} </a>
+                            {% endfor %}
+                        </p>
+                        <p>Year: {{ project.ano }}</p>
+                        <div class="news-img">
+                            {% if project.image %}
+                                <img src="{{ project.image.url }}" alt="{{ project.title }}">
+                            {% endif %}
+                        </div>
+                        <p><b>Resumo:</b> {{ project.resumo }}</p>
+                        <p>
+                            {% if project.report_link %}
+                                <a href="{{ project.report_link }}">Report Link</a><br>
+                            {% endif %}
+                            {% if project.github_repo %}
+                                <a href="{{ project.github_repo }}">GitHub Repository</a><br>
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+            {% empty %}
+                <p>No projects available.</p>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}
+{% block footer %}
+    <section class="footer section">
+        <div class="footer__container">
+            <p class="footer__copy">UNIVERSIDADE LUSÓFONA - ENGENHARIA INFORMÁTICA</p>
+            <p>Today is: <span id="date"></span></p>
+            <p class="footer__copy">&#169; 2023 Joana Okica. All rights reserved</p>
+        </div>
+    </section>
+{% endblock %}

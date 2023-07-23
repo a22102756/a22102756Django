@@ -1,0 +1,67 @@
+{% extends 'portfolio/layout.html' %}
+{% load static %}
+
+{% block header %}
+{% endblock%}
+
+{% block main %}
+    <section class="form-container-quest section">
+        <form action="" method="POST" class="form-quest">
+            <h2>Questionário</h2>
+            <h3>Pergunta 1:</h3>
+            <p>Qual é a sua cor favorita?</p>
+            <label>
+                <input type="radio" name="cor" value="azul">
+                    Azul
+            </label>
+            <label>
+                <input type="radio" name="cor" value="vermelho">
+                Vermelho
+            </label>
+            <label>
+                <input type="radio" name="cor" value="verde">
+                Verde
+            </label>
+
+            <h3>Pergunta 2:</h3>
+            <p>Qual é o seu animal favorito?</p>
+            <label>
+                <input type="radio" name="animal" value="cão">
+                Cão
+            </label>
+            <label>
+                <input type="radio" name="animal" value="gato">
+                Gato
+            </label>
+            <label>
+            <input type="radio" name="animal" value="passarinho">
+                Passarinho
+            </label>
+
+            <h3>Pergunta 3:</h3>
+            <p>Qual é a sua idade?</p>
+            <input type="text" name="idade">
+
+            <h3>Pergunta 4:</h3>
+            <p>Quais são as suas habilidades?</p>
+            <label>
+                <input type="checkbox" name="habilidades" value="programação">
+                Programação
+            </label>
+            <label>
+                <input type="checkbox" name="habilidades" value="design">
+                Design
+            </label>
+            <label>
+                <input type="checkbox" name="habilidades" value="escrita">
+                Escrita
+            </label>
+
+            <h3>Pergunta 5:</h3>
+            <p>Deixe um comentário:</p>
+            <textarea name="comentario" rows="4"></textarea>
+
+            <input type="submit" value="Enviar">
+        </form>
+    </section>
+{% endblock %}

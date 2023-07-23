@@ -1,0 +1,74 @@
+{% extends 'portfolio/layout.html' %}
+{% load static %}
+
+{% block header %}
+{% endblock %}
+
+{% block main %}
+    <section class="jumbotron blog__container bd-container">
+        <div style="margin-top: 70px">
+            <h1>Publications</h1>
+            <form method="GET" action="{% url 'portfolio:search_posts' %}">
+                <input type="search" name="area" placeholder="Pesquisar por área">
+                <button type="submit">Pesquisar</button>
+            </form>
+
+            {% if area %}
+                <h2>Área: {{ area }}</h2>
+            {% endif %}
+
+            {% if posts %}
+                <ul>
+                    {% for post in posts %}
+                        <li>{{ post.title }} - {{ post.area }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>Nenhum resultado encontrado.</p>
+            {% endif %}
+
+        </div>
+
+
+        {% for post in publication %}
+            <div class="post">
+                <h2>{{ post.title }}</h2>
+                <p>Autor: {{ post.autor }}</p>
+                <p>{{ post.content }}</p>
+                <img src="{{ post.imagem.url }}" alt="{{ post.title }}" class="post-image">
+                <p>Total de <a href="{% url 'portfolio:like_post' post.id %}" class="like-button"
+                               style="font-size: 24px">❤️</a>: {{ post.likes }}
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'portfolio:editPost' post.id %}" class="btn btn-warning  btn-sm"
+                           style="float: right; margin-right: 10px">Editar</a>
+                    {% endif %}
+                </p>
+                <div class="comment-section">
+                    <h2>Comments:</h2>
+                    <ul>
+                        {% for comment in post.comments.all %}
+                            <li><span class="comment-bullet">&#8226;</span> {{ comment.content }}</li>
+                        {% endfor %}
+                    </ul>
+                    <h2>Add a Comment:</h2>
+                    <form action="{% url 'portfolio:add_comment' post.id %}" method="POST">
+                        {% csrf_token %}
+                        <textarea name="content" rows="4" cols="20"></textarea>
+                        <br>
+                        <button type="submit">Comment</button>
+                    </form>
+                </div>
+            </div>
+        {% endfor %}
+    </section>
+{% endblock %}
+{% block footer %}
+    <section class="footer section">
+        <div class="footer__container">
+            <p class="footer__copy">UNIVERSIDADE LUSÓFONA - ENGENHARIA INFORMÁTICA</p>
+            <p>Today is: <span id="date"></span></p>
+            <p class="footer__copy">&#169; 2023 Joana Okica. All rights reserved</p>
+        </div>
+    </section>
+{% endblock %}
+
